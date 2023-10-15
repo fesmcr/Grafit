@@ -44,7 +44,7 @@ if CalculateAllMatrices:
     # Select which weights are needed to measure shortest paths
     # By default, all other matrices which are not the main are selected
     allIds = list(range(len(primalGraph.weightMatrices)))
-    otherMatricesIds = [i for i in allIds if i != WeightMatrixIdxMain]
-    primalGraph.FillWeightMatrixBySPRestore(otherMatricesIds, GPU)
+    otherMatricesIds = [i for i in allIds if i != WeightMatrixIndexMain]
+    primalGraph.FillWeightMatrixBySPRestore(Array[int](otherMatricesIds), GPU)
     
 PrimalDirGraph = primalGraph    
