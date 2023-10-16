@@ -40,11 +40,15 @@ isovist = CIsovist(
   VR, HVA,
   VVA,
   HPr, VPr, VAO);
+  
+isovist.CalculateMetrics(OHP)  
 
 if OHP:
-    HitPoints = isovist.hits
+    HitPoints = isovist.HitPointsAsTree
 
-MeshIdsPerRay = isovist.surfaceToRaysList
+MeshIdsPerRay = isovist.MeshIdsPerRayAsTree
+SumRaysPerObstacle = isovist.SumRaysPerObstacle
+SumRaysPerGround = isovist.SumRaysPerGround
 NumberOfRays = isovist.NumberOfRaysPerPoint
     
  
