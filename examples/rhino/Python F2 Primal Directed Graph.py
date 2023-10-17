@@ -29,9 +29,14 @@ from Grafit import *
 from GrafitRhino import *
 from System import Array
 
+# Positive infinity (similar to double.PositiveInfinity in C#)
+double_PositiveInfinity = float('inf')
+
+# Maximum finite positive value (similar to double.MaxValue in C#)
+double_MaxValue = sys.float_info.max
+
 primalGraph = {} 
-
-
+ 
 #Create Primal Graph 
 lineGeometry = Array[CWLine](map(lambda s: CWLine(s), LineGeometry))
 
@@ -39,7 +44,7 @@ graphElements, edgeLengths = GeometryToGraphElements[rg.Point3d, rg.Line].GetNod
 
 primalGraph = CPrimalDirectedGraph[rg.Point3d, rg.Line](graphElements)
 primalGraph.AddWeightMatrix(edgeLengths)    # index 0
-primalGraph.AddEmptyWeightMatrix()          # index 1  
+primalGraph.AddEmptyWeightMatrix(double_MaxValue)          # index 1  
 
 for i in range(len(primalGraph.UndirectedEdges)):
     n1 = primalGraph.UndirectedEdges[i][0]  # start node of edge #i
