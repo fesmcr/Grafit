@@ -37,9 +37,9 @@ dualGraph = {}
 if True: 
     lineGeometry = Array[CWLine](map(lambda s: CWLine(s), LineGeometry))
 
-    graphElements, edgeLengths = GeometryToGraphElements[rg.Point3d, rg.Line].GetNodesAndEdgesFromLines(lineGeometry)
+    graphElements, edgeLengths = GeometryToGraphElements.GetNodesAndEdgesFromLines(lineGeometry)
 
-    primalGraph = CPrimalDirectedGraph[rg.Point3d, rg.Line](graphElements)
+    primalGraph = CPrimalDirectedGraph(graphElements)
     primalGraph.AddWeightMatrix(edgeLengths)  # index 0
     primalGraph.AddEmptyWeightMatrix()  # index 1 - angles
     
@@ -56,10 +56,10 @@ if True:
 # Create Dual Graph
 if True:    
     # Get dual nodes and edges from primal graph
-    graphElements, edgeLengths, edgeAngles = GeometryToGraphElements[rg.Point3d, rg.Line].GetDualNodesAndEdgesFromPrimalGraph(primalGraph)
+    graphElements, edgeLengths, edgeAngles = GeometryToGraphElements.GetDualNodesAndEdgesFromPrimalGraph(primalGraph)
     
     # Create the dual graph using the primal graph and dual graph elements
-    dualGraph = CDualUndirectedGraph[rg.Point3d, rg.Line](primalGraph, graphElements)
+    dualGraph = CDualUndirectedGraph(primalGraph, graphElements)
 
     # The order of dual graph weight matrices must be the same as in the primal graph
     # First, add dual lengths

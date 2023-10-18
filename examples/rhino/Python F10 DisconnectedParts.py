@@ -36,7 +36,7 @@ from Grasshopper.Kernel.Data import GH_Path
 
 graph = Graph 
 
-if isinstance(Graph, CDualUndirectedGraph[rg.Point3d, rg.Line]): 
+if isinstance(Graph, CDualUndirectedGraph): 
     graph = Graph.PrimalDirectedGraph
 
 subgraphsList = graph.GetDisconnectedParts()

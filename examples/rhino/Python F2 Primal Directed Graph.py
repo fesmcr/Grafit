@@ -40,9 +40,9 @@ primalGraph = {}
 #Create Primal Graph 
 lineGeometry = Array[CWLine](map(lambda s: CWLine(s), LineGeometry))
 
-graphElements, edgeLengths = GeometryToGraphElements[rg.Point3d, rg.Line].GetNodesAndEdgesFromLines(lineGeometry)
+graphElements, edgeLengths = GeometryToGraphElements.GetNodesAndEdgesFromLines(lineGeometry)
 
-primalGraph = CPrimalDirectedGraph[rg.Point3d, rg.Line](graphElements)
+primalGraph = CPrimalDirectedGraph(graphElements)
 primalGraph.AddWeightMatrix(edgeLengths)    # index 0
 primalGraph.AddEmptyWeightMatrix(double_MaxValue)          # index 1  
 

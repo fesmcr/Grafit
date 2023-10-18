@@ -33,7 +33,7 @@ from System import Array
 
 graph = Graph 
 
-if isinstance(Graph, CDualUndirectedGraph[rg.Point3d, rg.Line]): 
+if isinstance(Graph, CDualUndirectedGraph): 
     graph = Graph.PrimalDirectedGraph
 
 NodeAsPoints = [s.Internal for s in Enumerable.Select(graph.NodesGeometryList, lambda s: s)]
