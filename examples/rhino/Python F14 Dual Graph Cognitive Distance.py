@@ -48,7 +48,7 @@ if True:
 
     primalGraph = CPrimalDirectedGraph(graphElements)
     primalGraph.AddWeightMatrix(edgeLengths)            # index 0
-    primalGraph.AddEmptyWeightMatrix()                  # index 1 - angles
+    primalGraph.AddEmptyWeightMatrix(0)                  # index 1 - angles
     primalGraph.AddEmptyWeightMatrix(double_MaxValue);  # index 2 - steps
     primalGraph.AddEmptyWeightMatrix(double_MaxValue);  # index 3 - time
     
