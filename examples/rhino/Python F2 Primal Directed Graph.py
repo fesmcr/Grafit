@@ -51,6 +51,11 @@ for i in range(len(primalGraph.UndirectedEdges)):
     n2 = primalGraph.UndirectedEdges[i][1]  # end node of edge #i
  
     weight_matrix_id = 1
+	
+    if EdgeWeightsForward[i] <= 0:
+        EdgeWeightsForward[i] = 0.00001	
+    if EdgeWeightsBackward[i] <= 0:
+        EdgeWeightsBackward[i] = 0.00001
 
     primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsForward[i], n1, n2, weight_matrix_id)  # forward direction
     primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsBackward[i], n2, n1, weight_matrix_id)  # backward direction 
