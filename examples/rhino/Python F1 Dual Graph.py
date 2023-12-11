@@ -46,6 +46,7 @@ if True:
     for i in range(len(primalGraph.UndirectedEdges)):
         n1 = primalGraph.UndirectedEdges[i][0]  # start node of edge #i
         n2 = primalGraph.UndirectedEdges[i][1]  # end node of edge #i
+		
     
         weight_1 = 0.0  # angle of a single edge is 0.0 deg
         weight_matrix_id = 1
@@ -59,7 +60,7 @@ if True:
     graphElements, edgeLengths, edgeAngles = GeometryToGraphElements.GetDualNodesAndEdgesFromPrimalGraph(primalGraph)
     
     # Create the dual graph using the primal graph and dual graph elements
-    dualGraph = CDualUndirectedGraph(primalGraph, graphElements)
+    dualGraph = CDualDirectedGraph[float](primalGraph, graphElements)
 
     # The order of dual graph weight matrices must be the same as in the primal graph
     # First, add dual lengths
@@ -73,7 +74,7 @@ if True:
     # dualGraph.SetWeightMatrixValue(some_weight, prim_edge_id_0, prim_edge_id_1, weight_matrix_index)
     
     if UseFilterMatrix:
-        dualGraph.APShortestPathsByManyWeights(WeightMatrixIndexMain, WeightMatrixIndexFilter, GPU)
+        dualGraph.APShortestPathsByManyWeights(WeightMatrixIndexMain, WeightMatrixIndexFilter, GPU, 0.000001)
     else:
         dualGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU) 
 
@@ -81,7 +82,7 @@ if True:
 if CalculateAllMatrices:
     # Select which weights are needed to measure shortest paths
     # By default, all other matrices which are not the main are selected
-    allIds = list(range(len(dualGraph.weightMatrices)))
+    allIds = list(range(dualGraph.WeightMatricesCount))
     otherMatricesIds = [i for i in allIds if i != WeightMatrixIndexMain]
     dualGraph.FillWeightMatrixBySPRestore(Array[int](otherMatricesIds), GPU)
     

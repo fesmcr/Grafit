@@ -74,7 +74,7 @@ if True:
     graphElements, edgeLengths, edgeAngles = GeometryToGraphElements.GetDualNodesAndEdgesFromPrimalGraph(primalGraph)
     
     # Create the dual graph using the primal graph and dual graph elements
-    dualGraph = CDualUndirectedGraph(primalGraph, graphElements)
+    dualGraph = CDualDirectedGraph[float](primalGraph, graphElements)
 
     # The order of dual graph weight matrices must be the same as in the primal graph
     # Dual lengths

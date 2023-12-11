@@ -30,12 +30,8 @@ from System.Linq import *
 from Grafit import *
 from GrafitRhino import *
 from System import Array
+ 
 
-graph = Graph 
-
-if isinstance(Graph, CDualUndirectedGraph): 
-    graph = Graph.PrimalDirectedGraph
-
-NodeAsPoints = [s.Internal for s in Enumerable.Select(graph.NodesGeometryList, lambda s: s)]
-EdgesDirected = [s.Internal for s in Enumerable.Select(graph.GenerateDirectedEdgeGeometry(CWLine.LineFromPoints), lambda s: s)]
-EdgesUndirected = [s.Internal for s in Enumerable.Select(graph.GenerateUndirectedEdgeGeometry(CWLine.LineFromPoints), lambda s: s)]
+NodeAsPoints = [s.Internal for s in Enumerable.Select(Graph.NodesGeometryList, lambda s: s)]
+EdgesDirected = [s.Internal for s in Enumerable.Select(Graph.GenerateDirectedEdgeGeometry(CWLine.LineFromPoints), lambda s: s)]
+EdgesUndirected = [s.Internal for s in Enumerable.Select(Graph.GenerateUndirectedEdgeGeometry(CWLine.LineFromPoints), lambda s: s)]

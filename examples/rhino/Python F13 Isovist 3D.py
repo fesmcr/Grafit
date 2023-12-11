@@ -7,7 +7,7 @@ clr.AddReference("System.Core")
 clr.AddReference("System.IO")
 
 from System import Environment
-from System.IO import *
+from System.IO import * 
 
 if CustomLibPath is not None: 
 	# Check if the assembly is loaded
@@ -26,12 +26,14 @@ else:
 	clr.AddReference("Grafit") 
 	clr.AddReference("GrafitRhino") 
 
+
 from System.Linq import *
 from Grafit import *
 from GrafitRhino import * 
 from System import *
 from System.Collections.Generic import List
 
+			
 isovist = CIsovist(
   List[rg.Point3d](VP) ,
   List[rg.Mesh](OS),
@@ -40,15 +42,13 @@ isovist = CIsovist(
   VR, HVA,
   VVA,
   HPr, VPr, VAO);
-  
-isovist.CalculateMetrics(OHP)  
 
-if OHP:
-    HitPoints = isovist.HitPointsAsTree
+isovist.CalculateMetrics(OHP)  
 
 MeshIdsPerRay = isovist.MeshIdsPerRayAsTree
 SumRaysPerObstacle = isovist.SumRaysPerObstacle
 SumRaysPerGround = isovist.SumRaysPerGround
 NumberOfRays = isovist.NumberOfRaysPerPoint
-    
- 
+
+if OHP: 
+	HitPoints = isovist.HitPointsAsTree 

@@ -33,7 +33,7 @@ from GrafitRhino import *
 #Get Weight Matrix As Rhino Matrix Object 
 dm = Graph.GetWeightMatrixById(WeightMatrixIndex);
 
-result = GrafitRhinoUtils.Get1DDoubleArrayAsMatrix(dm);
+result = GrafitRhinoUtils.Get2DDoubleArrayAsMatrix(dm);
 
 FromN = len(From);
 ToN = len(To);

@@ -32,8 +32,7 @@ from System import Array
 
 NodesPath, EdgesPath = Graph.GetShortestPathNodeAndEdgeIds(Origin, Destination, UseDirectedEdges) 
 
-wmc = len(Graph.weightMatrices)
 
 Distances = []
-for i in range(wmc):
+for i in range(Graph.WeightMatricesCount):
     Distances.append(Graph.GetShortestPathDistance(Origin, Destination, i))

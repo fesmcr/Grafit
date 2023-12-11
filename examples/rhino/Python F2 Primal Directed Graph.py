@@ -61,7 +61,7 @@ for i in range(len(primalGraph.UndirectedEdges)):
     primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsBackward[i], n2, n1, weight_matrix_id)  # backward direction 
 
 if UseFilterMatrix:
-  primalGraph.APShortestPathsByManyWeights(WeightMatrixIndexMain, WeightMatrixIndexFilter, GPU);
+  primalGraph.APShortestPathsByManyWeights(WeightMatrixIndexMain, WeightMatrixIndexFilter, GPU, 0.000001);
 else:
   primalGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU);
  
@@ -69,7 +69,7 @@ else:
 if CalculateAllMatrices:
     # Select which weights are needed to measure shortest paths
     # By default, all other matrices which are not the main are selected
-    allIds = list(range(len(primalGraph.weightMatrices)))
+    allIds = list(range(primalGraph.WeightMatricesCount))
     otherMatricesIds = [i for i in allIds if i != WeightMatrixIndexMain]
     primalGraph.FillWeightMatrixBySPRestore(Array[int](otherMatricesIds), GPU)
     
