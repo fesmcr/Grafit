@@ -103,12 +103,12 @@ if True:
             oppositePrimDirEdgeId_1 = primalGraph.GetOppositeEdgeId(primDirEdgeId_1)
             
             # index 2 - steps
-            dualGraph.SetWeightMatrixAndEdgeValue(double_PositiveInfinity, primDirEdgeId_0, primDirEdgeId_1, 2)
-            dualGraph.SetWeightMatrixAndEdgeValue(double_PositiveInfinity, oppositePrimDirEdgeId_1, oppositePrimDirEdgeId_0, 2)
+            dualGraph.SetWeightMatrixAndEdgeValue(double_MaxValue, primDirEdgeId_0, primDirEdgeId_1, 2)
+            dualGraph.SetWeightMatrixAndEdgeValue(double_MaxValue, oppositePrimDirEdgeId_1, oppositePrimDirEdgeId_0, 2)
     
             # index 3 - time 
-            dualGraph.SetWeightMatrixAndEdgeValue(double_PositiveInfinity, primDirEdgeId_0, primDirEdgeId_1, 3)
-            dualGraph.SetWeightMatrixAndEdgeValue(double_PositiveInfinity, oppositePrimDirEdgeId_1, oppositePrimDirEdgeId_0, 3)
+            dualGraph.SetWeightMatrixAndEdgeValue(double_MaxValue, primDirEdgeId_0, primDirEdgeId_1, 3)
+            dualGraph.SetWeightMatrixAndEdgeValue(double_MaxValue, oppositePrimDirEdgeId_1, oppositePrimDirEdgeId_0, 3)
             continue
     
         undirPrimDirEdgeId_0 = primalGraph.GetUndirectedEdgeId(primDirEdgeId_0)
