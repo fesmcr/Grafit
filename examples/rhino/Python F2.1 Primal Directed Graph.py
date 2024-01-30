@@ -67,8 +67,8 @@ for i in range(len(primalGraph.UndirectedEdges)):
     primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsBackward[i], n2, n1, weight_matrix_id)  # backward direction 
 
     weight_matrix_id = 2
-    primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsForward[i], n1, n2, weight_matrix_id)  # forward direction 2
-    primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsBackward[i], n2, n1, weight_matrix_id)  # backward direction 2 
+    primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsForward2[i], n1, n2, weight_matrix_id)  # forward direction 2
+    primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsBackward2[i], n2, n1, weight_matrix_id)  # backward direction 2 
 
 if UseFilterMatrix:
   primalGraph.APShortestPathsByManyWeights(WeightMatrixIndexMain, WeightMatrixIndexFilter, GPU, 0.000001);
