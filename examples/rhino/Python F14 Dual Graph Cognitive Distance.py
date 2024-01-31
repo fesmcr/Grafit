@@ -190,7 +190,7 @@ if True:
     
 # Calculate shortest paths
 dualGraph.APShortestPathsByManyWeights(WeightMatrixIndexMain, WeightMatrixIndexFilter, GPU, 0.0000000001)
-#dualGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU) 
+#dualGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU, 0.0000000001) 
 
  
 # Calculate all other Weight Matrices, which are not WeightMatrixIndexMain

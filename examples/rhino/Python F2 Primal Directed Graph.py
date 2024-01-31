@@ -44,7 +44,7 @@ graphElements, edgeLengths = GeometryToGraphElements.GetNodesAndEdgesFromLines(l
 
 primalGraph = CPrimalDirectedGraph(graphElements)
 primalGraph.AddWeightMatrix(edgeLengths)    # index 0
-primalGraph.AddEmptyWeightMatrix(double_MaxValue)          # index 1  
+primalGraph.AddEmptyWeightMatrix(double_MaxValue)          # index 1   
 
 for i in range(len(primalGraph.UndirectedEdges)):
     n1 = primalGraph.UndirectedEdges[i][0]  # start node of edge #i
@@ -58,12 +58,12 @@ for i in range(len(primalGraph.UndirectedEdges)):
         EdgeWeightsBackward[i] = 0.00001
 
     primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsForward[i], n1, n2, weight_matrix_id)  # forward direction
-    primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsBackward[i], n2, n1, weight_matrix_id)  # backward direction 
+    primalGraph.SetWeightMatrixAndEdgeValue(EdgeWeightsBackward[i], n2, n1, weight_matrix_id)  # backward direction  
 
 if UseFilterMatrix:
   primalGraph.APShortestPathsByManyWeights(WeightMatrixIndexMain, WeightMatrixIndexFilter, GPU, 0.000001);
 else:
-  primalGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU);
+  primalGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU, 0.000001);
  
 # If graph has more than 1 weight matrix, calculate distances along shortest paths according to all other weights
 if CalculateAllMatrices:

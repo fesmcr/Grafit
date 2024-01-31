@@ -76,7 +76,7 @@ if True:
     if UseFilterMatrix:
         dualGraph.APShortestPathsByManyWeights(WeightMatrixIndexMain, WeightMatrixIndexFilter, GPU, 0.000001)
     else:
-        dualGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU) 
+        dualGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU, 0.000001) 
 
 # If graph has more than 1 weight matrix, calculate distances along shortest paths according to all other weights
 if CalculateAllMatrices:
