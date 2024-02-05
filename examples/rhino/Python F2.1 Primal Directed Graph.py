@@ -73,7 +73,7 @@ for i in range(len(primalGraph.UndirectedEdges)):
 if UseFilterMatrix:
   primalGraph.APShortestPathsByManyWeights(WeightMatrixIndexMain, WeightMatrixIndexFilter, GPU, 0.000001);
 else:
-  primalGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU);
+  primalGraph.APShortestPathsByOneWeight(WeightMatrixIndexMain, GPU,0.000001);
  
 # If graph has more than 1 weight matrix, calculate distances along shortest paths according to all other weights
 if CalculateAllMatrices:
