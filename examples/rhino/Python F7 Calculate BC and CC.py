@@ -33,16 +33,23 @@ from System import Array
 
 n = Graph.NodesCount 
 
-# Create a list of lists to represent the jagged array
-odwmtmp = [[0.0] * n for _ in range(n)]
-
-# Convert the list of lists to a jagged array
-odwm = Array[Array[float]]([Array[float](row) for row in odwmtmp])
 
 
-for i in range(len(From)):
-    for j in range(len(To)):
-        odwm[From[i]][To[j]] = ODWeightMatrixReduced[i, j]
+
+if(ODWeightMatrixReduced != None):
+	# Create a list of lists to represent the jagged array
+	odwmtmp = [[0.0] * n for _ in range(n)]
+
+	# Convert the list of lists to a jagged array
+	odwm = Array[Array[float]]([Array[float](row) for row in odwmtmp])
+
+	for i in range(len(From)):
+		for j in range(len(To)):
+			odwm[From[i]][To[j]] = ODWeightMatrixReduced[i, j]
+else: 
+	odwmtmp = [[1.0] * n for _ in range(n)] 
+	# Convert the list of lists to a jagged array
+	odwm = Array[Array[float]]([Array[float](row) for row in odwmtmp])
 
 measurement = CMeasure(Graph)
 measurement.UseDirectedEdges = UseDirectedEdges
