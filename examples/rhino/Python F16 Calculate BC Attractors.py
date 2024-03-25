@@ -32,7 +32,7 @@ from GrafitRhino import *
 from System import *
 from System.Collections.Generic import List, Dictionary
 
-   
+from Grasshopper.Kernel import GH_RuntimeMessageLevel as RML  
  
 n = Graph.NodesCount 
 
@@ -58,14 +58,30 @@ for i in fc:
     for j in tc:
         odwm[From[i]][To[j]] = ODWeightMatrixReduced[i, j]
 		
+if(len(EdgeAttractorIds) != len(EdgeAttractorWeights)): 
+	ghenv.Component.AddRuntimeMessage(RML.Error , "Length of EdgeAttractorIds and EdgeAttractorWeights lists should be the same")
+	
+# Create a list 0 weights for all undirected edges
+EdgeAttractorWeightsList =  [0.0 for _ in range(Graph.UndirectedEdgesCount)]
 
-
+# Set input edges to input weights
+for i in range(len(EdgeAttractorIds)):
+	EdgeAttractorWeightsList[EdgeAttractorIds[i]] = EdgeAttractorWeights[i]
+	
 measurement = CMeasure(Graph)
 measurement.UseDirectedEdges = False 
 
-measurement.CalculateBCWithAttractors(odwm, List[float](EdgeAttractorWeights)) 
+# Calculate BC With Attractors
+measurement.CalculateBCWithAttractors(odwm, List[float](EdgeAttractorWeightsList)) 
 
-BCAttractors = measurement.BCEdgesAttractors; 
+# Init result BC list with 0
+EdgeAttractorBCResults = [0.0 for _ in range(len(EdgeAttractorIds))]
+
+# Output BC only for input Edge ids
+for i in range(len(EdgeAttractorIds)):
+	EdgeAttractorBCResults[i] = measurement.BCEdgesAttractors[EdgeAttractorIds[i]] 
+
+BCAttractors = EdgeAttractorBCResults; 
 
 
  
