@@ -35,6 +35,19 @@ dm = Graph.GetWeightMatrixById(WeightMatrixIndex);
 
 result = GrafitRhinoUtils.Get2DDoubleArrayAsMatrix(dm);
 
+n = Graph.NodesCount 
+
+fc = range(len(From))
+tc = range(len(To))
+
+if(len(From) == 0): 
+	fc = range(n)
+	From = list(fc)
+	
+if(len(To) == 0):
+	tc = range(n) 
+	To = list(tc)
+
 FromN = len(From);
 ToN = len(To);
 

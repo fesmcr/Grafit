@@ -30,7 +30,7 @@ from GrafitRhino import *
 from System import Array
  
 
-NodesPath, EdgesPath = Graph.GetShortestPathNodeAndEdgeIds(Origin, Destination, UseDirectedEdges) 
+NodesPath, EdgesPath = Graph.GetShortestPathNodeAndEdgeIds(Origin, Destination) 
 
 
 Distances = []

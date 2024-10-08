@@ -51,7 +51,6 @@ for i in range(len(From)):
         odwm[From[i]][To[j]] = ODWeightMatrixReduced[i, j]
 
 measurement = CMeasure(Graph)
-measurement.UseDirectedEdges = Directed
 
 V = measurement.CalculateBCVisibility(odwm, Array[int](MeshIdsPerRay), Dictionary[int, List[int]](EdgeToVantagePointsDict), BrepsCount)
 

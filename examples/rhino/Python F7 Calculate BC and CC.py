@@ -29,31 +29,13 @@ else:
 from System.Linq import *
 from Grafit import *
 from GrafitRhino import * 
-from System import Array
+from System import Array 
+from System.Collections.Generic import List
 
-n = Graph.NodesCount 
-
-
-
-
-if(ODWeightMatrixReduced != None):
-	# Create a list of lists to represent the jagged array
-	odwmtmp = [[0.0] * n for _ in range(n)]
-
-	# Convert the list of lists to a jagged array
-	odwm = Array[Array[float]]([Array[float](row) for row in odwmtmp])
-
-	for i in range(len(From)):
-		for j in range(len(To)):
-			odwm[From[i]][To[j]] = ODWeightMatrixReduced[i, j]
-else: 
-	odwmtmp = [[1.0] * n for _ in range(n)] 
-	# Convert the list of lists to a jagged array
-	odwm = Array[Array[float]]([Array[float](row) for row in odwmtmp])
+n = Graph.NodesCount  
 
 measurement = CMeasure(Graph)
-measurement.UseDirectedEdges = UseDirectedEdges
  
-measurement.CalculateBC(odwm, GPU)
-BCN = measurement.BCNodes
-BCE = measurement.BCEdges
+result = measurement.CalculateBC(GrafitRhinoUtils.UnfoldReducedMatrix(ODWeightMatrixReduced, List[int](From), List[int](To), n )  , GPU)
+BCN = result[0] # BCNodes
+BCE = result[1] # BCEdges

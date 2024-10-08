@@ -60,18 +60,14 @@ for i in fc:
 
 
 measurement = CMeasure(Graph)
-measurement.UseDirectedEdges = Directed
 
 EdgeGroupsList = [] 
 
 for i in range(EdgeGroups.BranchCount):
     EdgeGroupsList.append(List[int](EdgeGroups.Branches[i]))
 
-r = measurement.CalculateBCGroup(odwm, List[List[int]](EdgeGroupsList), True)
-
-
-BCGroup = r.Item1
-#BCGroupOD = r.Item2[0]
+BCGroup = measurement.CalculateBCGroup(odwm, List[List[int]](EdgeGroupsList))
+ 
 
 
  

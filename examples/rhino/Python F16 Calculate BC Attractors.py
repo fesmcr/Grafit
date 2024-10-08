@@ -69,7 +69,6 @@ for i in range(len(EdgeAttractorIds)):
 	EdgeAttractorWeightsList[EdgeAttractorIds[i]] = EdgeAttractorWeights[i]
 	
 measurement = CMeasure(Graph)
-measurement.UseDirectedEdges = False 
 
 # Calculate BC With Attractors
 measurement.CalculateBCWithAttractors(odwm, List[float](EdgeAttractorWeightsList)) 
